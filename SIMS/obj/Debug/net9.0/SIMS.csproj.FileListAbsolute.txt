@@ -1,0 +1,14 @@
+E:\dotnetasm2\SIMS\bin\Debug\net9.0\SIMS.exe
+E:\dotnetasm2\SIMS\bin\Debug\net9.0\SIMS.deps.json
+E:\dotnetasm2\SIMS\bin\Debug\net9.0\SIMS.runtimeconfig.json
+E:\dotnetasm2\SIMS\bin\Debug\net9.0\SIMS.dll
+E:\dotnetasm2\SIMS\bin\Debug\net9.0\SIMS.pdb
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.GeneratedMSBuildEditorConfig.editorconfig
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.AssemblyInfoInputs.cache
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.AssemblyInfo.cs
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.csproj.CoreCompileInputs.cache
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.dll
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\refint\SIMS.dll
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.pdb
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.genruntimeconfig.cache
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\ref\SIMS.dll
