@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "LV/sEPn6FqA=",
+  "dgSpecHash": "dLmz78p23oY=",
   "success": true,
   "projectFilePath": "E:\\dotnetasm2\\SIMS\\SIMS.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\ThinkPad\\.nuget\\packages\\csvhelper\\33.1.0\\csvhelper.33.1.0.nupkg.sha512"
+  ],
   "logs": []
 }

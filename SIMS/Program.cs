@@ -42,6 +42,8 @@ class Program
             Console.WriteLine("2. Thêm khóa học (Admin)");
             Console.WriteLine("3. Xóa người dùng (Admin)");
             Console.WriteLine("4. Đăng xuất");
+            Console.WriteLine("5. Chỉnh sửa tài khoản (Admin)");
+            Console.WriteLine("6. Hiển thị danh sách người dùng (Admin)");
             Console.Write("Chọn: ");
             string subChoice = Console.ReadLine();
 
@@ -59,6 +61,12 @@ class Program
                 case "4":
                     manager.Logout();
                     return;
+                case "5":
+                    manager.editAccount();
+                    break;
+                case "6":
+                    manager.ShowUsers();
+                    break;
                 default:
                     Console.WriteLine("❌ Không hợp lệ.");
                     break;

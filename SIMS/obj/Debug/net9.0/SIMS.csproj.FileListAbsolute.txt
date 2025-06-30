@@ -12,3 +12,7 @@ E:\dotnetasm2\SIMS\obj\Debug\net9.0\refint\SIMS.dll
 E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.pdb
 E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.genruntimeconfig.cache
 E:\dotnetasm2\SIMS\obj\Debug\net9.0\ref\SIMS.dll
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.sourcelink.json
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.csproj.AssemblyReference.cache
+E:\dotnetasm2\SIMS\bin\Debug\net9.0\CsvHelper.dll
+E:\dotnetasm2\SIMS\obj\Debug\net9.0\SIMS.csproj.Up2Date
