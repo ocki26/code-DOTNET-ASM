@@ -8,11 +8,11 @@ class Program
 
         while (true)
         {
-            Console.WriteLine("\n=== MENU CHÍNH ===");
-            Console.WriteLine("1. Đăng ký tài khoản Student");
-            Console.WriteLine("2. Đăng nhập");
-            Console.WriteLine("0. Thoát");
-            Console.Write("Chọn: ");
+            Console.WriteLine("\n=== MAIN MENU ===");
+            Console.WriteLine("1. Register Student Account");
+            Console.WriteLine("2. Login");
+            Console.WriteLine("0. Exit");
+            Console.Write("Choose: ");
             string mainChoice = Console.ReadLine();
 
             switch (mainChoice)
@@ -25,9 +25,10 @@ class Program
                     SubMenu(manager);
                     break;
                 case "0":
+                    Console.WriteLine("👋 Goodbye!");
                     return;
                 default:
-                    Console.WriteLine("❌ Không hợp lệ.");
+                    Console.WriteLine("❌ Invalid option.");
                     break;
             }
         }
@@ -37,14 +38,14 @@ class Program
     {
         while (true)
         {
-            Console.WriteLine("\n=== MENU SAU ĐĂNG NHẬP ===");
-            Console.WriteLine("1. Tạo tài khoản Teacher/Admin (Admin)");
-            Console.WriteLine("2. Thêm khóa học (Admin)");
-            Console.WriteLine("3. Xóa người dùng (Admin)");
-            Console.WriteLine("4. Đăng xuất");
-            Console.WriteLine("5. Chỉnh sửa tài khoản (Admin)");
-            Console.WriteLine("6. Hiển thị danh sách người dùng (Admin)");
-            Console.Write("Chọn: ");
+            Console.WriteLine("\n=== POST-LOGIN MENU ===");
+            Console.WriteLine("1. Create Teacher/Admin Account (Admin Only)");
+            Console.WriteLine("2. Add Course (Admin Only)");
+            Console.WriteLine("3. Remove User (Admin Only)");
+            Console.WriteLine("4. Logout");
+            Console.WriteLine("5. Edit Account (Admin Only)");
+            Console.WriteLine("6. Show All Users (Admin Only)");
+            Console.Write("Choose: ");
             string subChoice = Console.ReadLine();
 
             switch (subChoice)
@@ -68,7 +69,7 @@ class Program
                     manager.ShowUsers();
                     break;
                 default:
-                    Console.WriteLine("❌ Không hợp lệ.");
+                    Console.WriteLine("❌ Invalid option.");
                     break;
             }
         }

@@ -2,7 +2,7 @@ public class Course
 {
     public string CourseId { get; set; }
     public string CourseName { get; set; }
-    public string Major { get; set; } // ngành học phù hợp
+    public string Major { get; set; } 
 
     public Course(string courseId, string courseName, string major)
     {

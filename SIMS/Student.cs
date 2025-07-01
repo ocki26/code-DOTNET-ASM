@@ -1,6 +1,6 @@
 public class Student : User
 {
-  public string Major { get; set; } // ngành học
+  public string Major { get; set; } 
 
 
   public override string GetRole() => "Student";

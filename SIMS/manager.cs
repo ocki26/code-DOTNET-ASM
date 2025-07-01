@@ -81,40 +81,40 @@ public class Manager
     public void RegisterStudent()
     {
         Console.Write("ID: "); string id = Console.ReadLine();
-        Console.Write("Tên: "); string name = Console.ReadLine();
+        Console.Write("name: "); string name = Console.ReadLine();
         Console.Write("Email: "); string email = Console.ReadLine();
-        Console.Write("Mật khẩu: "); string password = Console.ReadLine();
+        Console.Write("pass word: "); string password = Console.ReadLine();
 
         if (users.Any(u => u.email == email))
         {
-            Console.WriteLine("❌ Email đã tồn tại.");
+            Console.WriteLine("❌ Email already exists.");
             return;
         }
 
-        Console.Write("Ngành học: "); string major = Console.ReadLine();
+        Console.Write("Couser: "); string major = Console.ReadLine();
         User student = new Student(id, name, email, password, major);
         users.Add(student);
         SaveStudents();
-        Console.WriteLine("✅ Đăng ký tài khoản sinh viên thành công!");
+        Console.WriteLine("✅ register complete!");
     }
 
     public void CreateUserByAdmin()
     {
         if (currentUser is not Admin)
         {
-            Console.WriteLine("❌ Chỉ admin mới có quyền tạo tài khoản này.");
+            Console.WriteLine("❌ Only admin can create this account.");
             return;
         }
 
         Console.Write("ID: "); string id = Console.ReadLine();
-        Console.Write("Tên: "); string name = Console.ReadLine();
+        Console.Write("name: "); string name = Console.ReadLine();
         Console.Write("Email: "); string email = Console.ReadLine();
-        Console.Write("Mật khẩu: "); string password = Console.ReadLine();
-        Console.Write("Loại tài khoản (admin/teacher): "); string role = Console.ReadLine().ToLower();
+        Console.Write("pass work: "); string password = Console.ReadLine();
+        Console.Write("type account (admin/teacher): "); string role = Console.ReadLine().ToLower();
 
         if (users.Any(u => u.email == email))
         {
-            Console.WriteLine("❌ Email đã tồn tại.");
+            Console.WriteLine("❌ Email already exists.");
             return;
         }
 
@@ -125,45 +125,45 @@ public class Manager
         }
         else if (role == "teacher")
         {
-            Console.Write("Công việc: "); string work = Console.ReadLine();
+            Console.Write("work: "); string work = Console.ReadLine();
             user = new Teacher(id, name, email, password, work);
         }
         else
         {
-            Console.WriteLine("❌ Không hợp lệ.");
+            Console.WriteLine("❌ Invalid.");
             return;
         }
 
         users.Add(user);
         if (user is Teacher) SaveTeachers();
-        Console.WriteLine("✅ Tạo tài khoản " + role + " thành công!");
+        Console.WriteLine("✅ create account " + role + " success!");
     }
 
     public void AddCourse()
     {
         if (currentUser is not Admin)
         {
-            Console.WriteLine("❌ Chỉ admin mới được thêm khóa học.");
+            Console.WriteLine("❌ Only admin can add courses.");
             return;
         }
 
-        Console.Write("Mã khóa học: ");
+        Console.Write("id courser: ");
         string id = Console.ReadLine();
-        Console.Write("Tên khóa học: ");
+        Console.Write("name courser: ");
         string name = Console.ReadLine();
-        Console.Write("Ngành phù hợp: ");
+        Console.Write("Suitable industry: ");
         string major = Console.ReadLine();
 
         courses.Add(new Course(id, name, major));
         SaveCourses();
-        Console.WriteLine("✅ Đã thêm khóa học.");
+        Console.WriteLine("✅ Course added.");
     }
 
     public void LoginUI()
     {
         Console.Write("Email: ");
         string email = Console.ReadLine();
-        Console.Write("Mật khẩu: ");
+        Console.Write("pass word: ");
         string password = Console.ReadLine();
 
         var user = users.FirstOrDefault(u => u.email == email && u.password == password);
@@ -171,16 +171,16 @@ public class Manager
         if (user != null)
         {
             currentUser = user;
-            Console.WriteLine($"✅ Xin chào {user.name} ({user.GetRole()})");
+            Console.WriteLine($"✅ hello {user.name} ({user.GetRole()})");
 
             if (user is Student student)
             {
                 while (true)
                 {
-                    Console.WriteLine("=== MENU SINH VIÊN ===");
-                    Console.WriteLine("1. Xem các khóa học phù hợp");
-                    Console.WriteLine("2. Đăng xuất");
-                    Console.Write("Chọn: ");
+                    Console.WriteLine("=== STUDENT MENU ===");
+                    Console.WriteLine("1. View relevant courses");
+                    Console.WriteLine("2. log out");
+                    Console.Write("choose: ");
                     string input = Console.ReadLine();
 
                     if (input == "1")
@@ -190,17 +190,17 @@ public class Manager
                         Logout();
                         break;
                     }
-                    else Console.WriteLine("❌ Lựa chọn không hợp lệ.");
+                    else Console.WriteLine("❌Invalid selection.");
                 }
             }
             else if (user is Teacher)
             {
                 while (true)
                 {
-                    Console.WriteLine("=== MENU GIẢNG VIÊN ===");
-                    Console.WriteLine("1. Xem tất cả các khóa học");
-                    Console.WriteLine("2. Đăng xuất");
-                    Console.Write("Chọn: ");
+                    Console.WriteLine("=== LECTURER MENU ===");
+                    Console.WriteLine("1. View all courses");
+                    Console.WriteLine("2. Log out");
+                    Console.Write("choose: ");
                     string input = Console.ReadLine();
 
                     if (input == "1")
@@ -210,24 +210,24 @@ public class Manager
                         Logout();
                         break;
                     }
-                    else Console.WriteLine("❌ Lựa chọn không hợp lệ.");
+                    else Console.WriteLine("❌ Invalid selection.");
                 }
             }
         }
         else
         {
-            Console.WriteLine("❌ Sai thông tin đăng nhập.");
+            Console.WriteLine("❌Incorrect login information.");
         }
     }
 
     public void ShowCoursesForStudent(Student student)
     {
-        Console.WriteLine("📘 Các khóa học phù hợp với ngành: " + student.Major);
+        Console.WriteLine("📘 Courses relevant to the industry: " + student.Major);
         var matched = courses.Where(c => c.Major.Equals(student.Major, StringComparison.OrdinalIgnoreCase)).ToList();
 
         if (matched.Count == 0)
         {
-            Console.WriteLine("❌ Không có khóa học nào phù hợp.");
+            Console.WriteLine("❌No courses match.");
             return;
         }
 
@@ -239,28 +239,28 @@ public class Manager
 
     public void ShowAllCourses()
     {
-        Console.WriteLine("📚 Danh sách tất cả khóa học:");
+        Console.WriteLine("📚List of all courses:");
         foreach (var course in courses)
         {
-            Console.WriteLine($"{course.CourseId} - {course.CourseName} (Ngành: {course.Major})");
+            Console.WriteLine($"{course.CourseId} - {course.CourseName} (courser: {course.Major})");
         }
     }
 
     public void Logout()
     {
         currentUser = null;
-        Console.WriteLine("🚪 Đã đăng xuất.");
+        Console.WriteLine("🚪 log out.");
     }
     public void RemoveUser()
 {
     if (currentUser is not Admin)
     {
-        Console.WriteLine("❌ Chỉ admin được xóa tài khoản.");
+        Console.WriteLine("❌ Only admin can delete account.");
         return;
     }
 
     ShowUsers();
-    Console.Write("Nhập ID người dùng cần xóa: ");
+    Console.Write("Enter the user ID to delete:");
     string id = Console.ReadLine();
     var user = users.FirstOrDefault(u => u.id == id);
 
@@ -271,11 +271,11 @@ public class Manager
         if (user is Student) SaveStudents();
         else if (user is Teacher) SaveTeachers();
 
-        Console.WriteLine("✅ Đã xóa người dùng.");
+        Console.WriteLine("✅User deleted.");
     }
     else
     {
-        Console.WriteLine("❌ Không tìm thấy hoặc không thể xóa chính mình.");
+        Console.WriteLine("❌ Could not find or delete itself.");
     }
 }
 
@@ -283,66 +283,66 @@ public void editAccount()
 {
     if (currentUser is not Admin)
     {
-        Console.WriteLine("❌ Chỉ admin được chỉnh sửa tài khoản.");
+        Console.WriteLine("❌ Only admin can edit account.");
         return;
     }
 
     ShowUsers();
-    Console.Write("Chọn ID tài khoản cần sửa: ");
+    Console.Write("Select the account ID to edit:");
     string id = Console.ReadLine();
 
     if (id == currentUser.id)
     {
-        Console.WriteLine("❌ Không thể chỉnh sửa chính mình.");
+        Console.WriteLine("❌ Can't edit myself.");
         return;
     }
 
     var user = users.FirstOrDefault(u => u.id == id);
     if (user == null)
     {
-        Console.WriteLine("❌ Không tìm thấy người dùng.");
+        Console.WriteLine("❌ User not found.");
         return;
     }
 
-    Console.WriteLine("1. Sửa tên");
-    Console.WriteLine("2. Sửa email");
-    Console.WriteLine("3. Sửa mật khẩu");
+    Console.WriteLine("1. edit name");
+    Console.WriteLine("2. edit  email");
+    Console.WriteLine("3. edit password");
     string choice = Console.ReadLine();
 
     switch (choice)
     {
         case "1":
-            Console.Write("Nhập tên mới: ");
+            Console.Write("add new name: ");
             user.name = Console.ReadLine();
             break;
         case "2":
-            Console.Write("Nhập email mới: ");
+            Console.Write("add new email: ");
             string newEmail = Console.ReadLine();
             if (users.Any(u => u.email == newEmail))
             {
-                Console.WriteLine("❌ Email đã tồn tại.");
+                Console.WriteLine("❌ Email already exists.");
                 return;
             }
             user.email = newEmail;
             break;
         case "3":
-            Console.Write("Nhập mật khẩu mới: ");
+            Console.Write("Enter new password: ");
             user.password = Console.ReadLine();
             break;
         default:
-            Console.WriteLine("❌ Lựa chọn không hợp lệ.");
+            Console.WriteLine("❌ Invalid selection.");
             return;
     }
 
     if (user is Student) SaveStudents();
     else if (user is Teacher) SaveTeachers();
 
-    Console.WriteLine("✅ Đã cập nhật tài khoản.");
+    Console.WriteLine("✅ Account updated.");
 }
 
 public void ShowUsers()
 {
-    Console.WriteLine("\n📋 Danh sách người dùng:");
+    Console.WriteLine("\n📋 List of users:");
     foreach (var user in users)
     {
         Console.WriteLine($"{user.id} - {user.name} ({user.GetRole()}) - {user.email}");
